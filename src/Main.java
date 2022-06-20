@@ -17,8 +17,8 @@ public class Main {
         newDirectory("Games//src", "test");
 
         // 3. В подкаталоге main создайте два файла: Main.java, Utils.java
-        newFile("src//main", "Main.java");
-        newFile("src//main", "Utils.java");
+        newFile("Games//src//main", "Main.java");
+        newFile("Games//src//main", "Utils.java");
 
         // 4. В каталог res создайте три директории: drawables, vectors, icons.
         newDirectory("Games//res", "drawables");
@@ -26,7 +26,7 @@ public class Main {
         newDirectory("Games//res", "icons");
 
         // 5.В директории temp создайте файл temp.txt
-        newFile("temp", "temp.txt");
+        newFile("Games//temp", "temp.txt");
 
         // 6.  Сохранения лога
         newLog();
@@ -51,25 +51,28 @@ public class Main {
 
 
     /*
-    Метод создающий файилы в директории Games\"dirPath"
+    Метод создающий файлы в директории Games\"dirPath"
     и добавляющий информацию в файл log об успешности/ошибки создания
     */
     public static void newFile(String dirPath, String nameFile) {
-        File myFile = new File("Games//" + dirPath, nameFile);
+        File myFile = new File(dirPath, nameFile);
         Date data = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss ");
         String login;
         try {
             if (myFile.createNewFile()) {
-                login = "\n" + formatForDateNow.format(data) + ": файл \"" + nameFile + "\" создана в директории Games//" + dirPath;
+                login = "\n" + formatForDateNow.format(data) + ": файл \"" + nameFile + "\" создан в директории " + dirPath;
             } else {
-                login = formatForDateNow.format(data) + ": ОШИБКА создания файла \"" + nameFile + "\" директории Games//";
+                login = formatForDateNow.format(data) + ": ОШИБКА создания файла \"" + nameFile + "\" директории " + dirPath;
             }
             log.append(login);
         } catch (IOException ex) {
         }
     }
 
+    /*
+    Запись лога в файл temp
+    */
     public static void newLog() {
         try (FileWriter writer = new FileWriter("Games//temp//temp.txt", false)) {
             writer.write(log.toString());

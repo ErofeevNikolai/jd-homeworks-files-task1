@@ -28,7 +28,7 @@ public class Main {
         // 5.В директории temp создайте файл temp.txt
         newFile("Games//temp", "temp.txt");
 
-        // 6.  Сохранения лога
+        // 6.  Запись лога
         newLog();
     }
 
